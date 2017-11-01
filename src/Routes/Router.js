@@ -16,6 +16,7 @@ export default class Router extends Component {
   }
 
   componentDidMount() {
+    this.setState({ results: [] })
     this.getBooks()
   }
 
@@ -82,6 +83,11 @@ export default class Router extends Component {
     }
   }
 
+  clearSearch = () => {
+    this.setState({ results: [] })
+  }
+
+
   render() {
 
     return (
@@ -113,7 +119,7 @@ export default class Router extends Component {
         path='/search'
         exact
         render={ () => (
-          <SearchBar selectChange={ this.selectChange } results={ this.state.results } onChange={ this.onChange } />
+          <SearchBar selectChange={ this.selectChange } clearSearch={ this.clearSearch } results={ this.state.results } onChange={ this.onChange } />
         ) }
       />
     </div>

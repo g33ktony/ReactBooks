@@ -10,12 +10,13 @@ export default function SearchBar( props ) {
     onChange: PropTypes.func.isRequired,
     results: PropTypes.array.isRequired,
     selectChange: PropTypes.func.isRequired,
+    clearSearch: PropTypes.func.isRequired
   }
 
   return (
     <div className="search-books">
       <div className="search-books-bar">
-        <Link className="close-search" to='/'/>
+        <Link onClick={ props.clearSearch } className="close-search" to='/'/>
         <div className="search-books-input-wrapper">
           <input type="text" value={ props.value } onChange={ props.onChange } placeholder="Search by title or author"/>
         </div>
