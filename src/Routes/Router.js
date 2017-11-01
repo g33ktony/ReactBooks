@@ -58,13 +58,12 @@ export default class Router extends Component {
   }
 
   searchBooks( query ) {
-    console.log('my books', this.state.myBooks);
     if (query !== '') {
-      BooksAPI.search( query, 10 ).then( res => {
+      BooksAPI.search( query, 2 ).then( res => {
+        // console.log('res', res);
         if (!res.error) {
           const results = res.map( book => {
             const duplicate = this.state.myBooks.find( el => ( el.id === book.id ) )
-            console.log('duplicate', duplicate);
             return {
               title: book.title ? book.title : '',
               authors: book.authors ? book.authors : [],
