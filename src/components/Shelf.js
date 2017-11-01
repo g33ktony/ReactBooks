@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Book from './Book'
 
 export default function Shelf( props ) {
 
@@ -9,9 +9,9 @@ export default function Shelf( props ) {
       <div className="bookshelf-books">
         <ol className="books-grid">
           {
-            props.books.map( book => (
-              <li>
-                <Book />
+            props.books.map( ( book, i ) => (
+              <li key={ i }>
+                <Book selectChange={ props.selectChange } info={ book }/>
               </li>
             ))
           }
