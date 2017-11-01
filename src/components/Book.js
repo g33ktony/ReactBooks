@@ -15,7 +15,7 @@ export default function Book( props ) {
 
   Book.propTypes = {
     selectChange: PropTypes.func.isRequired,
-    info: PropTypes.object.isRequired,
+    info: PropTypes.object.isRequired
   }
 
   return (
