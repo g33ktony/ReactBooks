@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from './Select'
+import PropTypes from 'prop-types'
 
 
 export default function Book( props ) {
@@ -11,6 +12,11 @@ export default function Book( props ) {
     { value: 'read', disabled: false, text: 'Read' },
     { value: 'none', disabled: false, text: 'None' },
   ]
+
+  Book.propTypes = {
+    selectChange: PropTypes.func.isRequired,
+    info: PropTypes.object.isRequired,
+  }
 
   return (
       <div className="book">
