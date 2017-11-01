@@ -7,7 +7,7 @@ export default function Select( props ) {
   Select.propTypes = {
     options: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
-    selected: PropTypes.string.isRequired
+    selected: PropTypes.string.isRequired,
   }
 
   return (

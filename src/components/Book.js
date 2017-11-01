@@ -5,17 +5,10 @@ import PropTypes from 'prop-types'
 
 export default function Book( props ) {
 
-  const options = [
-    { value: 'move', disabled: true, text: 'Move to...' },
-    { value: 'currentlyReading', disabled: false, text: 'Currently Reading' },
-    { value: 'wantToRead', disabled: false, text: 'Want to Read' },
-    { value: 'read', disabled: false, text: 'Read' },
-    { value: 'none', disabled: false, text: 'None' },
-  ]
-
   Book.propTypes = {
     selectChange: PropTypes.func.isRequired,
-    info: PropTypes.object.isRequired
+    info: PropTypes.object.isRequired,
+    options: PropTypes.array.isRequired
   }
 
   return (
@@ -23,13 +16,21 @@ export default function Book( props ) {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url('${ props.info.imageURL }')` }}/>
           <div className="book-shelf-changer">
-            <Select onChange={ event => props.selectChange( event, props.info ) } selected={ props.info.shelf } id={ props.info.id } options={ options } />
+            <Select
+              id={ props.info.id }
+              onChange={ event => props.selectChange( event, props.info ) }
+              options={ props.options }
+              selected={ props.info.shelf }
+            />
           </div>
         </div>
         <div className="book-title">{ props.info.title }</div>
         {
           props.info.authors.map( ( author, i ) => (
-            <div key={ i } className="book-authors">{ author }</div>
+            <div
+              className="book-authors"
+              key={ i }
+            >{ author }</div>
           ) )
         }
       </div>

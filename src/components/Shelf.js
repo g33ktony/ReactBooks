@@ -7,7 +7,8 @@ export default function Shelf( props ) {
   Shelf.propTypes = {
     title: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    selectChange: PropTypes.func.isRequired
+    selectChange: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired
   }
 
   return (
@@ -18,7 +19,11 @@ export default function Shelf( props ) {
           {
             props.books.map( ( book, i ) => (
               <li key={ i }>
-                <Book selectChange={ props.selectChange } info={ book }/>
+                <Book
+                  info={ book }
+                  options={ props.options }
+                  selectChange={ props.selectChange }
+                />
               </li>
             ))
           }

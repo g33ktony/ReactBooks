@@ -6,11 +6,12 @@ import PropTypes from 'prop-types'
 export default function SearchBar( props ) {
 
   SearchBar.propTypes = {
-    value: PropTypes.string.isRequired,
+    value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     results: PropTypes.array.isRequired,
     selectChange: PropTypes.func.isRequired,
-    clearSearch: PropTypes.func.isRequired
+    clearSearch: PropTypes.func.isRequired,
+    options: PropTypes.array.isRequired
   }
 
   return (
@@ -26,7 +27,7 @@ export default function SearchBar( props ) {
           {
             props.results.map( ( book, i ) => (
               <li key={ i }>
-                <Book selectChange={ props.selectChange } info={ book }/>
+                <Book options={ props.options } selectChange={ props.selectChange } info={ book }/>
               </li>
             ))
           }

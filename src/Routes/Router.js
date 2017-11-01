@@ -15,6 +15,14 @@ export default class Router extends Component {
     results: [],
   }
 
+  options = [
+    { value: 'move', disabled: true, text: 'Move to...' },
+    { value: 'currentlyReading', disabled: false, text: 'Currently Reading' },
+    { value: 'wantToRead', disabled: false, text: 'Want to Read' },
+    { value: 'read', disabled: false, text: 'Read' },
+    { value: 'none', disabled: false, text: 'None' },
+  ]
+
   componentDidMount() {
     this.setState({ results: [] })
     this.getBooks()
@@ -102,9 +110,24 @@ export default class Router extends Component {
               </div>
               <div className="list-books-content">
                 <div>
-                  <Shelf selectChange={ this.selectChange } title='Currently Reading' books={ this.state.currentlyReading } />
-                  <Shelf selectChange={ this.selectChange } title='Want to Read' books={ this.state.wantToRead }/>
-                  <Shelf selectChange={ this.selectChange } title='Read' books={ this.state.read }/>
+                  <Shelf
+                    books={ this.state.currentlyReading }
+                    options={ this.options }
+                    selectChange={ this.selectChange }
+                    title='Currently Reading'
+                  />
+                  <Shelf
+                    books={ this.state.wantToRead }
+                    options={ this.options }
+                    selectChange={ this.selectChange }
+                    title='Want to Read'
+                  />
+                  <Shelf
+                    books={ this.state.read }
+                    options={ this.options }
+                    selectChange={ this.selectChange }
+                    title='Read'
+                  />
                 </div>
               </div>
               <div className="open-search">
@@ -116,10 +139,16 @@ export default class Router extends Component {
         ) }
       />
       <Route
-        path='/search'
         exact
+        path='/search'
         render={ () => (
-          <SearchBar selectChange={ this.selectChange } clearSearch={ this.clearSearch } results={ this.state.results } onChange={ this.onChange } />
+          <SearchBar
+            clearSearch={ this.clearSearch }
+            onChange={ this.onChange }
+            options={ this.options }
+            results={ this.state.results }
+            selectChange={ this.selectChange }
+          />
         ) }
       />
     </div>
